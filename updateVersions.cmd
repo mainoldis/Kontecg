@@ -1,0 +1,1 @@
+dotnet-gitversion.exe /updateprojectfiles /updateassemblyinfofile

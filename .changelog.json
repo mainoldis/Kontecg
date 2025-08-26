@@ -1,0 +1,22 @@
+{
+  "categories": [
+    "API",
+    "FE",
+    "BE"
+  ],
+  "bumpingRule": {
+    "major": [
+      "Deprecated"
+    ],
+    "minor": [
+      "Added",
+      "Changed",
+      "Removed",
+      "NoChanges"
+    ],
+    "patch": [
+      "Fixed",
+      "Security"
+    ]
+  }
+}

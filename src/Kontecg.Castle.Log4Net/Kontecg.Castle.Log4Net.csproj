@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <Import Project="..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Kontecg.Castle.Log4Net</AssemblyName>
+    <PackageId>Kontecg.Castle.Log4Net</PackageId>
+    <PackageTags>application framework;framework;domain driven design;log4net;castle</PackageTags>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <RootNamespace>Kontecg</RootNamespace>
+    <Description>Kontecg - Módulo de integración con Log4Net.</Description>
+    <AssemblyVersion>8.1.0.0</AssemblyVersion>
+    <FileVersion>8.1.0.0</FileVersion>
+    <InformationalVersion>8.1.0-alpha.55+Branch.develop.Sha.f16db8e1be801e0a550f3e864af5b06b1b94c902</InformationalVersion>
+    <Version>8.1.0-alpha.55</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kontecg\Kontecg.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.1.0" />
+  </ItemGroup>
+</Project>

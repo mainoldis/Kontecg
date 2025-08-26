@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <Import Project="..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Kontecg.Dapper</AssemblyName>
+    <PackageId>Kontecg.Dapper</PackageId>
+    <PackageTags>application framework;domain driven design;dapper;ORM</PackageTags>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <RootNamespace>Kontecg</RootNamespace>
+    <Description>Kontecg - Módulo para la integracion de Dapper con la estructura común y soportar un segundo ORM en la plataforma.</Description>
+    <AssemblyVersion>8.1.0.0</AssemblyVersion>
+    <FileVersion>8.1.0.0</FileVersion>
+    <InformationalVersion>8.1.0-alpha.55+Branch.develop.Sha.f16db8e1be801e0a550f3e864af5b06b1b94c902</InformationalVersion>
+    <Version>8.1.0-alpha.55</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kontecg\Kontecg.csproj" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="DapperExtensions.DotnetCore" Version="1.0.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,223 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Kontecg.Domain.Entities;
+using Kontecg.Extensions;
+using Kontecg.Runtime.Validation;
+using Kontecg.UI;
+
+namespace Kontecg.Auditing
+{
+    /// <summary>
+    ///     Used to store audit logs.
+    /// </summary>
+    [Table("audit_logs", Schema = "log")]
+    public class AuditLog : Entity<long>, IMayHaveCompany
+    {
+        /// <summary>
+        ///     Maximum length of <see cref="ServiceName" /> property.
+        /// </summary>
+        public static int MaxServiceNameLength = 256;
+
+        /// <summary>
+        ///     Maximum length of <see cref="MethodName" /> property.
+        /// </summary>
+        public static int MaxMethodNameLength = 256;
+
+        /// <summary>
+        ///     Maximum length of <see cref="Parameters" /> property.
+        /// </summary>
+        public static int MaxParametersLength = 2048;
+
+        /// <summary>
+        ///     Maximum length of <see cref="ReturnValue" /> property.
+        /// </summary>
+        public static int MaxReturnValueLength = 2048;
+
+        /// <summary>
+        ///     Maximum length of <see cref="ClientIpAddress" /> property.
+        /// </summary>
+        public static int MaxClientIpAddressLength = 64;
+
+        /// <summary>
+        ///     Maximum length of <see cref="ClientName" /> property.
+        /// </summary>
+        public static int MaxClientNameLength = 128;
+
+        /// <summary>
+        ///     Maximum length of <see cref="ClientInfo" /> property.
+        /// </summary>
+        public static int MaxClientInfoLength = 2048;
+
+        /// <summary>
+        ///     Maximum length of <see cref="ExceptionMessage" /> property.
+        /// </summary>
+        public static int MaxExceptionMessageLength = 1024;
+
+        /// <summary>
+        ///     Maximum length of <see cref="Exception" /> property.
+        /// </summary>
+        public static int MaxExceptionLength = 2000;
+
+        /// <summary>
+        ///     Maximum length of <see cref="CustomData" /> property.
+        /// </summary>
+        public static int MaxCustomDataLength = 2000;
+
+        /// <summary>
+        ///     UserId.
+        /// </summary>
+        public virtual long? UserId { get; set; }
+
+        /// <summary>
+        ///     Service (class/interface) name.
+        /// </summary>
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>
+        ///     Executed method name.
+        /// </summary>
+        public virtual string MethodName { get; set; }
+
+        /// <summary>
+        ///     Calling parameters.
+        /// </summary>
+        public virtual string Parameters { get; set; }
+
+        /// <summary>
+        ///     Return values.
+        /// </summary>
+        public virtual string ReturnValue { get; set; }
+
+        /// <summary>
+        ///     Start time of the method execution.
+        /// </summary>
+        public virtual DateTime ExecutionTime { get; set; }
+
+        /// <summary>
+        ///     Total duration of the method call as milliseconds.
+        /// </summary>
+        public virtual int ExecutionDuration { get; set; }
+
+        /// <summary>
+        ///     IP address of the client.
+        /// </summary>
+        public virtual string ClientIpAddress { get; set; }
+
+        /// <summary>
+        ///     Name (generally computer name) of the client.
+        /// </summary>
+        public virtual string ClientName { get; set; }
+
+        /// <summary>
+        ///     Client information if this method is called in a request.
+        /// </summary>
+        public virtual string ClientInfo { get; set; }
+
+        /// <summary>
+        ///     Store the message content of  <see cref="Exception" />.
+        /// </summary>
+        public virtual string ExceptionMessage { get; set; }
+
+        /// <summary>
+        ///     Exception object, if an exception happen during execution of the method.
+        /// </summary>
+        public virtual string Exception { get; set; }
+
+        /// <summary>
+        ///     <see cref="AuditInfo.ImpersonatorUserId" />.
+        /// </summary>
+        public virtual long? ImpersonatorUserId { get; set; }
+
+        /// <summary>
+        ///     <see cref="AuditInfo.ImpersonatorCompanyId" />.
+        /// </summary>
+        public virtual int? ImpersonatorCompanyId { get; set; }
+
+        /// <summary>
+        ///     <see cref="AuditInfo.CustomData" />.
+        /// </summary>
+        public virtual string CustomData { get; set; }
+
+        /// <summary>
+        ///     CompanyId.
+        /// </summary>
+        public virtual int? CompanyId { get; set; }
+
+        /// <summary>
+        ///     Creates a new CreateFromAuditInfo from given <paramref name="auditInfo" />.
+        /// </summary>
+        /// <param name="auditInfo">Source <see cref="AuditInfo" /> object</param>
+        /// <returns>The <see cref="AuditLog" /> object that is created using <paramref name="auditInfo" /></returns>
+        public static AuditLog CreateFromAuditInfo(AuditInfo auditInfo)
+        {
+            string exceptionMessage = GetKontecgClearException(auditInfo.Exception);
+            return new AuditLog
+            {
+                CompanyId = auditInfo.CompanyId,
+                UserId = auditInfo.UserId,
+                ServiceName = auditInfo.ServiceName.TruncateWithPostfix(MaxServiceNameLength),
+                MethodName = auditInfo.MethodName.TruncateWithPostfix(MaxMethodNameLength),
+                Parameters = auditInfo.Parameters.TruncateWithPostfix(MaxParametersLength),
+                ReturnValue = auditInfo.ReturnValue.TruncateWithPostfix(MaxReturnValueLength),
+                ExecutionTime = auditInfo.ExecutionTime,
+                ExecutionDuration = auditInfo.ExecutionDuration,
+                ClientIpAddress = auditInfo.ClientIpAddress.TruncateWithPostfix(MaxClientIpAddressLength),
+                ClientName = auditInfo.ClientName.TruncateWithPostfix(MaxClientNameLength),
+                ClientInfo = auditInfo.ClientInfo.TruncateWithPostfix(MaxClientInfoLength),
+                Exception = exceptionMessage.TruncateWithPostfix(MaxExceptionLength),
+                ExceptionMessage = auditInfo.Exception?.Message.TruncateWithPostfix(MaxExceptionMessageLength),
+                ImpersonatorUserId = auditInfo.ImpersonatorUserId,
+                ImpersonatorCompanyId = auditInfo.ImpersonatorCompanyId,
+                CustomData = auditInfo.CustomData.TruncateWithPostfix(MaxCustomDataLength)
+            };
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "AUDIT LOG: {0}.{1} is executed by user {2} in {3} ms from {4} IP address.",
+                ServiceName, MethodName, UserId, ExecutionDuration, ClientIpAddress
+            );
+        }
+
+        /// <summary>
+        ///     Make audit exceptions more explicit.
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <returns></returns>
+        public static string GetKontecgClearException(Exception exception)
+        {
+            string clearMessage = "";
+            switch (exception)
+            {
+                case null:
+                    return null;
+
+                case KontecgValidationException kontecgValidationException:
+                    clearMessage = "There are " + kontecgValidationException.ValidationErrors.Count +
+                                   " validation errors:";
+                    foreach (ValidationResult validationResult in kontecgValidationException.ValidationErrors)
+                    {
+                        string memberNames = "";
+                        if (validationResult.MemberNames != null && validationResult.MemberNames.Any())
+                        {
+                            memberNames = " (" + string.Join(", ", validationResult.MemberNames) + ")";
+                        }
+
+                        clearMessage += "\r\n" + validationResult.ErrorMessage + memberNames;
+                    }
+
+                    break;
+
+                case UserFriendlyException userFriendlyException:
+                    clearMessage =
+                        $"UserFriendlyException.Code:{userFriendlyException.Code}\r\nUserFriendlyException.Details:{userFriendlyException.Details}";
+                    break;
+            }
+
+            return exception + (clearMessage.IsNullOrWhiteSpace() ? "" : "\r\n\r\n" + clearMessage);
+        }
+    }
+}

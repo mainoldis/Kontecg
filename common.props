@@ -1,0 +1,30 @@
+<Project>
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);CS1591;MSB3270</NoWarn>
+		<Authors>Ing. Mainoldis Fuentes Suarez</Authors>
+	    <Company>ECG</Company>
+		<CurrentYear>$([System.DateTime]::Now.ToString("yyyy"))</CurrentYear>
+		<Copyright>Copyright © 2019 - $(CurrentYear) ECG. Todos los derechos reservados</Copyright>
+		<PackageIcon>kontecg.png</PackageIcon>
+        <PackageIconUrl>http://172.22.16.45:8080/CSIRC/_git/Kontecg?path=%2Fkontecg.png</PackageIconUrl>
+	    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageProjectUrl>http://172.22.16.45:8080/CSIRC/Kontecg</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>http://172.22.16.45:8080/CSIRC/Kontecg/_git/Kontecg</RepositoryUrl>
+		<LangVersion>latest</LangVersion>
+	    <PlatformTarget>AnyCPU</PlatformTarget>
+	    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release' ">
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <PropertyGroup>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- Add PackageReference specific for your source control provider (see below) -->
+        <None Include="../../LICENSE.md" Pack="true" PackagePath="/"/>
+        <None Include="../../nupkg/kontecg.png" Pack="true" PackagePath="/"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,28 @@
+﻿namespace Kontecg.Notifications
+{
+    /// <summary>
+    ///     A class contains a <see cref="UserNotificationInfo" /> and related <see cref="NotificationInfo" />.
+    /// </summary>
+    public class UserNotificationInfoWithNotificationInfo
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="UserNotificationInfoWithNotificationInfo" /> class.
+        /// </summary>
+        public UserNotificationInfoWithNotificationInfo(UserNotificationInfo userNotification,
+            CompanyNotificationInfo notification)
+        {
+            UserNotification = userNotification;
+            Notification = notification;
+        }
+
+        /// <summary>
+        ///     User notification.
+        /// </summary>
+        public UserNotificationInfo UserNotification { get; set; }
+
+        /// <summary>
+        ///     Notification.
+        /// </summary>
+        public CompanyNotificationInfo Notification { get; set; }
+    }
+}

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <Import Project="..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>Kontecg</RootNamespace>
+    <AssemblyName>Kontecg.Baseline.EntityFrameworkCore</AssemblyName>
+    <PackageId>Kontecg.Baseline.EntityFrameworkCore</PackageId>
+    <PackageTags>application framework;framework;domain driven design;multicompany;user management;role management;identity;entity framework core</PackageTags>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Description>Kontecg - Módulo para la integracion de EFCore con la estructura común para la plataforma.</Description>
+    <AssemblyVersion>8.1.0.0</AssemblyVersion>
+    <FileVersion>8.1.0.0</FileVersion>
+    <InformationalVersion>8.1.0-alpha.55+Branch.develop.Sha.f16db8e1be801e0a550f3e864af5b06b1b94c902</InformationalVersion>
+    <Version>8.1.0-alpha.55</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kontecg.EntityFrameworkCore\Kontecg.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Kontecg.Baseline\Kontecg.Baseline.csproj" />
+  </ItemGroup>
+</Project>

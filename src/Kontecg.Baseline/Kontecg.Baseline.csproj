@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props" />
+  <Import Project="..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>Kontecg.Baseline</AssemblyName>
+    <PackageId>Kontecg.Baseline</PackageId>
+    <PackageTags>application framework;framework;domain driven design;multicompany;user management;role management;identity</PackageTags>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>Kontecg</RootNamespace>
+    <Description>Kontecg - Módulo que contiene la estructura común para la plataforma.</Description>
+    <AssemblyVersion>8.1.0.0</AssemblyVersion>
+    <FileVersion>8.1.0.0</FileVersion>
+    <InformationalVersion>8.1.0-alpha.55+Branch.develop.Sha.f16db8e1be801e0a550f3e864af5b06b1b94c902</InformationalVersion>
+    <Version>8.1.0-alpha.55</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Baseline\Localization\Source\*.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="9.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kontecg\Kontecg.csproj" />
+  </ItemGroup>
+</Project>
