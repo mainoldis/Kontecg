@@ -26,7 +26,7 @@ namespace Kontecg.Events.Bus.Entities
 
         public virtual object[] GetConstructorArgs()
         {
-            return new object[] {Entity};
+            return [Entity];
         }
     }
 }

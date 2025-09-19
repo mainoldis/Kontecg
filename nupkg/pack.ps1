@@ -18,6 +18,7 @@ $projects = (
 	"Kontecg.FluentValidation",
     "Kontecg.HangFire",
     "Kontecg.MailKit",
+    "Kontecg.MassTransit",
 	"Kontecg.MemoryDb",
 	"Kontecg.ML",
     "Kontecg.MongoDB",

@@ -16,10 +16,10 @@
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <RootNamespace>Kontecg</RootNamespace>
     <Description>Kontecg.HangFire</Description>
-    <AssemblyVersion>8.1.0.0</AssemblyVersion>
-    <FileVersion>8.1.0.0</FileVersion>
-    <InformationalVersion>8.1.0-alpha.55+Branch.develop.Sha.f16db8e1be801e0a550f3e864af5b06b1b94c902</InformationalVersion>
-    <Version>8.1.0-alpha.55</Version>
+    <AssemblyVersion>8.2.0.0</AssemblyVersion>
+    <FileVersion>8.2.0.0</FileVersion>
+    <InformationalVersion>8.2.0-alpha.51+Branch.develop.Sha.d106894472e0888b0b0af1c9a42ac0bbb0e970dc</InformationalVersion>
+    <Version>8.2.0-alpha.51</Version>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kontecg\Kontecg.csproj" />

@@ -128,7 +128,7 @@ namespace Kontecg.Events.Bus.Entities
                 return;
             }
 
-            _unitOfWorkManager.Current.Completed += (sender, args) =>
+            _unitOfWorkManager.Current!.Completed += (sender, args) =>
                 EventBus.Trigger(eventType, (IEventData) Activator.CreateInstance(eventType, entity));
         }
     }

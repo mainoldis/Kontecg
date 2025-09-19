@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 using Kontecg.Timing;
 
 namespace Kontecg.Events.Bus
@@ -132,6 +133,8 @@ namespace Kontecg.Events.Bus
         /// </code>
         /// </para>
         /// </remarks>
+        [JsonIgnore]
+        [Newtonsoft.Json.JsonIgnore]
         public object EventSource { get; set; }
     }
 }

@@ -82,6 +82,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontecg.BlobStoring.FileSys
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontecg.Castle.MsLogging", "src\Kontecg.Castle.MsLogging\Kontecg.Castle.MsLogging.csproj", "{F72EB2AF-BA7C-4039-92DD-9B0460CAEF48}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontecg.MassTransit", "src\Kontecg.MassTransit\Kontecg.MassTransit.csproj", "{8724ABDE-0021-490C-A8F1-7A641F2DD290}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kontecg.MassTransit.Tests", "test\Kontecg.MassTransit.Tests\Kontecg.MassTransit.Tests.csproj", "{13822200-1996-4898-8B64-E732A8851266}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -200,6 +204,14 @@ Global
 		{F72EB2AF-BA7C-4039-92DD-9B0460CAEF48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F72EB2AF-BA7C-4039-92DD-9B0460CAEF48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F72EB2AF-BA7C-4039-92DD-9B0460CAEF48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8724ABDE-0021-490C-A8F1-7A641F2DD290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8724ABDE-0021-490C-A8F1-7A641F2DD290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8724ABDE-0021-490C-A8F1-7A641F2DD290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8724ABDE-0021-490C-A8F1-7A641F2DD290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13822200-1996-4898-8B64-E732A8851266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13822200-1996-4898-8B64-E732A8851266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13822200-1996-4898-8B64-E732A8851266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13822200-1996-4898-8B64-E732A8851266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -233,6 +245,8 @@ Global
 		{5D8CFACE-8D3C-4501-87D9-C135C13D792A} = {E1ED7409-C34E-4177-8A3E-1A16F4A6507F}
 		{588B702D-C38B-4444-AC4D-D0339B3415CC} = {E1ED7409-C34E-4177-8A3E-1A16F4A6507F}
 		{F72EB2AF-BA7C-4039-92DD-9B0460CAEF48} = {E1ED7409-C34E-4177-8A3E-1A16F4A6507F}
+		{8724ABDE-0021-490C-A8F1-7A641F2DD290} = {E1ED7409-C34E-4177-8A3E-1A16F4A6507F}
+		{13822200-1996-4898-8B64-E732A8851266} = {3BAAC645-2D97-412F-A6F1-8BFA97689906}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F598E879-261C-471C-BD07-8F5BBC6DBF3D}

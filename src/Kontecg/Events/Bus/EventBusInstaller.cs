@@ -32,13 +32,13 @@ namespace Kontecg.Events.Bus
             if (_eventBusConfiguration.UseDefaultEventBus)
             {
                 container.Register(
-                    Component.For<IEventBus>().Instance(EventBus.Default).LifestyleSingleton()
+                    Component.For<IEventBus>().Instance(EventBus.Default).Named("event-bus").LifestyleSingleton()
                 );
             }
             else
             {
                 container.Register(
-                    Component.For<IEventBus>().ImplementedBy<EventBus>().LifestyleSingleton()
+                    Component.For<IEventBus>().ImplementedBy<EventBus>().Named("event-bus").LifestyleSingleton()
                 );
             }
 
